@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function fileImport(Request $request)
     {
-        Excel::import(new UsersImport, $request->file('file')->store('temp'));
+        Excel::import(new UsersImport, $request->file('file'));
         return back();
     }
 
