@@ -5,9 +5,10 @@ namespace App\Imports;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class UsersImport implements ToModel, WithUpserts
+class UsersImport implements ToModel, WithUpserts, WithHeadingRow
 {
 
     /**
@@ -25,14 +26,19 @@ class UsersImport implements ToModel, WithUpserts
      */
     public function model(array $row)
     {
-        // ddd($row);
-        // die();
-        return new User([
-            'name' => $row[0],
-            'email' => $row[1],
-            'password' => Hash::make('password'),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        dd($row);
+        die();
+        // return new User([
+        //     'name' => $row['name'],
+        //     'email' => $row['email'],
+        //     'password' => Hash::make('password'),
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
+        // return new User([
+        //     'name' => $row[7],
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
     }
 }
