@@ -9,9 +9,5 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'cari_hesap_kodu',
-        'name',
-        'location'
-    ];
+    protected $guarded = [];
 }

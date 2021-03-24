@@ -14,10 +14,13 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id();
-            $table->string('cari_hesap_kodu')->unique();
-            $table->string('name')->unique();
-            $table->string('location');
+            $table->bigIncrements('id');
+            $table->string('customer_id');
+            $table->string('product_id');
+            $table->double('amount');
+            $table->double('unit_price');
+            $table->double('cost');
+            $table->timestamp('sales_at');
             $table->timestamps();
         });
     }

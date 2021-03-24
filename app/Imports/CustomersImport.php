@@ -14,7 +14,7 @@ class CustomersImport implements ToModel, WithUpserts, WithHeadingRow
      */
     public function uniqueBy()
     {
-        return 'cari_hesap_kodu'&&'name';
+        // return 'cari_hesap_kodu'&&'name';
     }
     
     /**
@@ -26,13 +26,17 @@ class CustomersImport implements ToModel, WithUpserts, WithHeadingRow
     {
 
         // dd($row);
+        // dd(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['date']));
         // die();
 
         return new Customer([
             //
-            'cari_hesap_kodu' => $row['cari_hesap_kodu'],
-            'name' => $row['unvani'],
-            'location' => $row['konum']
+            'customer_id' => $row['cari_hesap_kodu'],
+            'product_id' => $row['kodu'],
+            'amount' => $row['miktar'],
+            'unit_price' => $row['birim_fiyat'],
+            'cost' => $row['tutar'],
+            'sales_at' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fis_tarihi']),
         ]);
     }
 }

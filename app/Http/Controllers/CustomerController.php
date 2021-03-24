@@ -23,7 +23,7 @@ class CustomerController extends Controller
      * @return \Illuminate\Support\Collection
      */
     public function fileImport(Request $request)
-    {
+    {   
         Excel::import(new CustomersImport, $request->file('file'));
         return back();
     }
